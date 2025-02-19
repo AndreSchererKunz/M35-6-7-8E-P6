@@ -10,6 +10,13 @@ export const Card = styled.div`
   }
   position: relative;
 `
+
+export const Photo = styled.img`
+  width: 100%;
+  height: 217px;
+  object-fit: cover;
+`
+
 export const Title = styled.h3`
   font-size: 18px;
   font-weight: bold;

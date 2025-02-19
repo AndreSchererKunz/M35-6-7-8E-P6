@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { cores } from '../../styles'
+import { Link } from 'react-router-dom'
 
 export const Card = styled.div`
   background-color: ${cores.vermelho};
@@ -7,10 +8,16 @@ export const Card = styled.div`
   max-width: 100%;
   display: flex;
   flex-direction: column;
+  border-radius: 5px;
 `
 
 export const Photo = styled.img`
   margin: 8px;
+  max-width: 300px;
+  max-height: 160px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 10px;
 `
 
 export const Title = styled.h3`
@@ -27,11 +34,14 @@ export const Description = styled.p`
   line-height: 22px;
 `
 
-export const AddCartButton = styled.button`
+export const AddCartButton = styled(Link)`
   background-color: ${cores.amareloClaro};
   color: ${cores.vermelho};
   border: none;
-  padding: 4px 0;
+  padding: 4px 6px;
   margin: 8px;
-  font-weight: bold;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  text-align: center;
 `

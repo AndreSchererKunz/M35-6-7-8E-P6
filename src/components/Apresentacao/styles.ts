@@ -1,15 +1,25 @@
 import styled from 'styled-components'
-import ApresentacaoFundo from '../../assets/images/apresentacao-fundo.png'
 import { cores } from '../../styles'
 
 export const ApresentacaoContainer = styled.div`
-  background-image: url(${ApresentacaoFundo});
   height: 280px;
   background-repeat: no-repeat;
   background-size: cover;
+  position: relative;
   .container {
     max-width: 1024px;
     margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  &::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    content: '';
   }
 `
 
