@@ -14,11 +14,17 @@ export const GlobalCss = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
     font-family: Roboto, sans-serif;
+    list-style: none;
   }
 
   body{
   background-color: ${cores.rosaClaro};
   color: ${cores.vermelho};
 }
-
 `
+
+export const breakpoints = {
+  desktop: '1024px',
+  tablet: '821px',
+  mobile: '430px'
+}
