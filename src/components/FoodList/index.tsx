@@ -13,7 +13,6 @@ import Food from '../../components/Food'
 import { AddCartButton } from './styles'
 import close from '../../assets/images/close.png'
 import { useState } from 'react'
-import { Restaurant, Pedido } from '../../pages/Home'
 import { useDispatch } from 'react-redux'
 import { addItem, open } from '../../store/reducers/cart'
 

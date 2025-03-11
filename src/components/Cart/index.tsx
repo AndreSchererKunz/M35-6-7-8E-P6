@@ -8,17 +8,28 @@ import {
   ImageItem,
   InfosItem,
   DeleteItemButton,
-  InfosCart
+  InfosCart,
+  CartStage
 } from './styles'
 import { RootReducer } from '../../store'
-import { close, removeItem } from '../../store/reducers/cart'
+import { close, removeItem, startCheckout } from '../../store/reducers/cart'
 import { priceFormat } from '../FoodList'
+import Checkout from '../Checkout'
 
 const Cart = () => {
-  const { isOpen, pedido } = useSelector((state: RootReducer) => state.cart)
+  const { isOpen, pedido, isAddress, isCart } = useSelector(
+    (state: RootReducer) => state.cart
+  )
   const dispatch = useDispatch()
   const openCart = () => {
     dispatch(close())
+  }
+  const activeCheckout = () => {
+    if (getTotalPrice() > 0) {
+      dispatch(startCheckout())
+    } else {
+      alert('Não há itens no carrinho')
+    }
   }
   const getTotalPrice = () => {
     return pedido.reduce((acumulator, actualValue) => {
@@ -32,7 +43,7 @@ const Cart = () => {
     <CartContainer className={isOpen ? 'is-open' : ''}>
       <Overlay onClick={openCart} />
       <Sidebar>
-        <div>
+        <CartStage className={!isCart ? 'is-checkout' : ''}>
           <ul>
             {pedido.map((p) => (
               <ItemCart key={p.id}>
@@ -49,8 +60,11 @@ const Cart = () => {
             <p>Valor total</p>
             <span>{priceFormat(getTotalPrice())}</span>
           </InfosCart>
-          <AddCartButton>Continuar com a entrega</AddCartButton>
-        </div>
+          <AddCartButton onClick={activeCheckout}>
+            Continuar com a entrega
+          </AddCartButton>
+        </CartStage>
+        <Checkout checkoutStart={isAddress} priceTotal={getTotalPrice()} />
       </Sidebar>
     </CartContainer>
   )

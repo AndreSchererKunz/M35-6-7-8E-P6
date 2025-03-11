@@ -6,6 +6,11 @@ export const ApresentacaoContainer = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    height: 100%;
+  }
+
   .container {
     max-width: 1024px;
     margin: 0 auto;
